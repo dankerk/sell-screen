@@ -1,14 +1,14 @@
-import { ProductsResponse } from '../../api/models/ProductsResponse.model';
+import { Product } from '../../api/models/Product.model';
 import './Product.component.scss';
 
 export interface ProductProps {
-  product: ProductsResponse
+  product: Product
 }
 
-function Product(props: ProductProps) {
+function ProductComponent(props: ProductProps) {
 
   return (
-    <div className="product">
+    <div className="product" data-testid="product">
       <div className="description">
         <div className="product-image" style={{ backgroundImage: `url('${props.product.picture}')` }}></div>
         <div>
@@ -23,4 +23,4 @@ function Product(props: ProductProps) {
   )
 } 
 
-export default Product;
+export default ProductComponent;

@@ -1,40 +1,54 @@
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { api } from '../../api/api';
-import { ProductsResponse } from '../../api/models/ProductsResponse.model';
+import { Product } from '../../api/models/Product.model';
 import Button from '../Button/Button.component';
-import Product from '../Product/Product.component';
+import ProductComponent from '../Product/Product.component';
 import './Product.component.scss';
 
-function ProductList() {
-  const [products, setProducts] = useState<ProductsResponse[]>([]);
+export interface ProductListComponentProps {
+  selectProduct: (product: Product) => void
+}
+
+function ProductListComponent(props: ProductListComponentProps) {
+  const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    api.getProducts()
+    const controller = new AbortController();
+    
+    api.getProducts({ controller })
       .then((products) => {
         setProducts(products.data);
       })
       .catch(() => {
         setError('Apologies. We\'re unable to load products.')
-      })
+      });
+
+      return () => {
+        controller.abort();
+      }
   }, []);
 
-  function getProducts() {
-    return products.map((product, index) => (<Product product={product} key={index}></Product>));
+  function getProducts(productList: Product[]): ReactNode | undefined {
+    const products = productList.map((product, index) => (
+      <button key={index} type="button" onClick={ () => props.selectProduct(product)}>
+        <ProductComponent product={product} ></ProductComponent>
+      </button>));
+    return products.length ? products : undefined;
   }
 
-  function getError() {
+  function getError(): ReactNode {
     return (<p>{ error }</p>)
   }
 
   return (
     <>
-      <div>{ getProducts() || getError() }</div>
+      <div>{ getProducts(products) || getError() }</div>
       <div className="product-actions">
-        <Button>Create new product</Button>
+        <Button onClick={ () => {} }>Create new product</Button>
       </div>
     </>
   )
 } 
 
-export default ProductList;
+export default ProductListComponent;

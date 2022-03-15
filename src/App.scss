@@ -22,17 +22,25 @@
       width: 40%;
     }
   }
-}
 
-hr {
   border: 0;
-  border-top: 1px solid $medium-grey-color;
+
+  hr {
+    border: 0;
+    border-top: 1px solid $medium-grey-color;
+  }
+  
+  p {
+    font-size: 1rem;
+  }
+
+  button {
+    outline: 0;
+    appearance: none;
+    border: 0;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+  }
 }
 
-p {
-  font-size: 1rem;
-}
-
-.products {
-
-}

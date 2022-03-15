@@ -14,7 +14,8 @@ export enum ButtonSize {
 interface ButtonProps {
   children: React.ReactNode,
   color?: ButtonColor,
-  size?: ButtonSize
+  size?: ButtonSize,
+  onClick: any
 }
 
 function Button(props: ButtonProps) {
@@ -22,7 +23,7 @@ function Button(props: ButtonProps) {
   const size = props.size || ButtonSize.default;
 
   return (
-    <button type="button" className={`size-${size} color-${color}`}>{ props.children }</button>
+    <button onClick={ () => props.onClick()  }type="button" className={`button size-${size} color-${color}`}>{ props.children }</button>
   )
 } 
 
