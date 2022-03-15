@@ -1,19 +1,23 @@
-import shoe from '../../assets/images/shoe-temp.png';
+import { ProductsResponse } from '../../api/models/ProductsResponse.model';
 import './Product.component.scss';
 
-function Product() {
+export interface ProductProps {
+  product: ProductsResponse
+}
+
+function Product(props: ProductProps) {
 
   return (
     <div className="product">
       <div className="description">
-        <img src={shoe} alt="cool shoe" />
+        <div className="product-image" style={{ backgroundImage: `url('${props.product.picture}')` }}></div>
         <div>
-          <h3 className="title">Product title</h3>
-          <p>1234567</p>
+          <h3 className="title">{ props.product.name }</h3>
+          <p>{ props.product.sku }</p>
         </div>
       </div>
       <div className="price">
-        $299,00
+        ${ props.product.price }
       </div>
     </div>
   )

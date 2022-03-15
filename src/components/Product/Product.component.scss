@@ -5,9 +5,10 @@
   border-bottom: 1px solid $medium-grey-color;
   padding: 20px;
 
-  img { 
+  .product-image { 
     height: 50px;
-    width: auto;
+    width: 50px;
+    background-position: center center;
   }
 
   &:hover {
