@@ -1,0 +1,45 @@
+@import "../../assets/styles/variables.scss";
+
+.product {
+  display: flex;
+  border-bottom: 1px solid $medium-grey-color;
+  padding: 20px;
+
+  img { 
+    height: 50px;
+    width: auto;
+  }
+
+  &:hover {
+    background: $light-blue;
+    cursor: pointer;
+  }
+
+  .title {
+    text-decoration: underline;
+  }
+
+  .description {
+    width: 75%;
+    display: flex;
+
+    &> div {
+      padding-left: 20px;
+    }
+  }
+
+  h3 {
+    margin-top: 0;
+    font-weight: normal;
+    font-size: 1rem;
+  }
+  
+  .price {
+    width: 25%;
+    text-align: right;
+  }
+
+  p {
+    margin: 0;
+  }
+}

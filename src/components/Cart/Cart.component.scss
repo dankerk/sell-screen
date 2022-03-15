@@ -1,0 +1,24 @@
+@import "../../assets/styles/variables.scss";
+
+.cart-contents {
+  margin-top: 20px;
+  background-color: $white-color;
+  padding: 20px;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &> div {
+    display: block;
+  }
+}
+
+.cart-actions button {
+  display: flex;
+  justify-content: space-between;
+  span {
+    font-size: .75rem;
+    font-weight: normal;
+  }
+}

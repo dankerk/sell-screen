@@ -1,0 +1,30 @@
+@import "../../assets/styles/variables.scss";
+
+button {
+  background: $green-color;
+  border: 0;
+  border-radius: 3px;
+  color: $white-color;
+  font-weight: bold;
+  padding: 10px 20px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.color-red {
+    background-color: $red-color;
+  }
+
+  &.size-large {
+    padding: 20px 30px;
+    font-size: 1.25rem;
+    width: 100%;
+  }
+
+  &.size-small {
+    padding: 5px 10px;
+    font-size: 1.5rem;
+  }
+
+}
